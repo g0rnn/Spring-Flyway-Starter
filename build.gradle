@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.5.7'
     id 'io.spring.dependency-management' version '1.1.7'
+    id 'org.flywaydb.flyway' version '10.20.1'
 }
 
 group = 'wap'
@@ -22,6 +23,7 @@ dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-web'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'jakarta.validation:jakarta.validation-api:3.0.2'
+    implementation 'org.flywaydb:flyway-core'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 
@@ -33,4 +35,12 @@ dependencies {
 
 tasks.named('test') {
     useJUnitPlatform()
+}
+
+flyway {
+    url = 'jdbc:h2:mem:school;MODE=MySQL;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE'
+    user = 'sa'
+    password = ''
+    locations = ['classpath:db/migration']
+    baselineOnMigrate = true
 }
