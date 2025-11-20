@@ -34,7 +34,7 @@ public class Enrollment {
     private Course course;
 
     @Enumerated(EnumType.STRING)
-    @Column(nullable = false, length = 20)
+    @Column(nullable = false, columnDefinition = "ENUM('ENROLLED','WAITING','CANCELLED')")
     private EnrollmentStatus status;
 
     @Column(name = "enrolled_at", nullable = false, updatable = false)

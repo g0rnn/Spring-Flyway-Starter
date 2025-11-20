@@ -1,0 +1,3 @@
+ALTER TABLE enrollments
+    MODIFY COLUMN status ENUM('ACTIVE', 'PENDING', 'DROPPED') NOT NULL;
+
